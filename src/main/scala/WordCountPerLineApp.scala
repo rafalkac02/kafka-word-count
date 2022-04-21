@@ -55,7 +55,6 @@ object WordCountPerLineApp extends App {
 //  }
 
 
-
   producer.close()
   consumer.close()
 }
