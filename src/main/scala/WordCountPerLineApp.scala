@@ -55,6 +55,15 @@ object WordCountPerLineApp extends App {
 //  }
 
 
+  // print "myOutput" topic
+  consumer.subscribe(List("myOutput").asJava)
+  while (true) {
+    val newRecords = consumer.poll(100).asScala
+    newRecords.foreach(record =>
+      println(s"record.offset - ${record.offset} | record.topic - ${record.topic} | record.key - ${record.key} | record.value - ${record.value}"))
+  }
+
+
   producer.close()
   consumer.close()
 }
